@@ -13,15 +13,15 @@ class VueMessages(Frame):
             #Creation zone message a envoyer
             self.init_zone_message()
             #Boutton quitter
-            quit_bouton = Button(master, text="Quitter", command=master.quit, bg="red")
+            quit_bouton = Button(master, text="Quitter", command=master.quit, bg="gray75", fg="red3")
             quit_bouton.pack(side="bottom")
 
         def init_zone_texte(self):
             frame_zone_text = LabelFrame(self, text="Messages", padx=5, pady=50)
-            self.zone_texte = Text(frame_zone_text, height=20, width=50)
+            self.zone_texte = Text(frame_zone_text, height=20, width=50, bg="ivory")
             self.zone_texte.pack(padx=5, pady=5)
             self.zone_texte.pack(side="left")
-            scroll_bar_text = Scrollbar(frame_zone_text)
+            scroll_bar_text = Scrollbar(frame_zone_text,borderwidth=800)
             scroll_bar_text.pack(side="right")
             scroll_bar_text.config(command=self.zone_texte.yview)
             self.zone_texte.config(yscrollcommand=scroll_bar_text.set)
@@ -29,17 +29,17 @@ class VueMessages(Frame):
 
         def init_zone_message(self):
             frame_zone_message = Label(self, padx=5, pady=5)
-            message_label = Label(frame_zone_message, text="Message :", bg="grey")
+            message_label = Label(frame_zone_message, text="Message :", bg="gray75")
             message_label.pack(side="left")
             self.message = Entry(frame_zone_message, width=50, bg="ivory")
             self.message.pack(side="left")
             frame_zone_message.pack()
-            envoyer_bouton = Button(frame_zone_message,text="Envoyer",command=self.envoyer_message)
+            envoyer_bouton = Button(frame_zone_message,text="Envoyer",command=self.envoyer_message, bg="light blue")
             envoyer_bouton.pack(side="right")
 
         def init_zone_pseudo(self):
             frame_zone_pseudo = Label(self, padx=5, pady=5)
-            pseudo_label = Label(frame_zone_pseudo, text="Pseudo :", bg="grey")
+            pseudo_label = Label(frame_zone_pseudo, text="Pseudo :", bg="gray75")
             pseudo_label.pack(side="left")
             self.pseudo = Entry(frame_zone_pseudo, width=50, bg="ivory")
             self.pseudo.pack(side="left")
@@ -63,5 +63,6 @@ class VueMessages(Frame):
 
 if __name__ == '__main__':
     root = Tk()
+    root.title('Messagerie')
     app = VueMessages(master=root)
     app.mainloop()
